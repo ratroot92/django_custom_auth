@@ -1,0 +1,61 @@
+ {% extends './layouts/base.html'%} {%block content%}
+<!-- Content -->
+
+<div id="content" class="colM">
+    <div id="content-main">
+        <form action="/register/" method="post" class="register" id="register-form"> {% csrf_token%}
+            <!-- <div class="form-row">
+
+                <label class="required" for="id_username">Username:</label> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+            </div>
+
+
+            <div class="form-row">
+
+                <label class="required" for="id_email">Email:</label> <input type="email" name="email" autocomplete="current-password" required id="id_email">
+
+            </div>
+
+
+
+            <div class="form-row">
+
+                <label class="required" for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required id="id_password">
+
+            </div>
+
+            <div class="form-row">
+
+                <label class="required" for="r_id_password">Retype Password:</label> <input type="r_password" name="r_password" autocomplete="current-password" required id="r_id_password">
+
+            </div>
+
+
+            <div class="submit-row">
+                <label>&nbsp;</label><input type="submit" value="Register">
+            </div> -->
+
+
+            <div class="form-row">
+                {% if form.username.errors %} {{form.username.errors}} {% endif %}{{form.username.label_tag}} {{form.username}}
+            </div>
+
+            <div class="form-row">
+                {% if form.password1.errors %} {{form.password1.errors}} {% endif %}{{form.password1.label_tag}} {{form.password1}}
+            </div>
+            <div></div>
+
+            <div class="form-row">
+                {% if form.password2.errors %} {{form.password2.errors}}{% endif %} {{form.password2.label_tag}} {{form.password2}}
+            </div>
+            <input type="submit" value="Register now" />
+        </form>
+        <a href="/login" class="btn btn-success float-right btn btn-warning">Login first </a>
+    </div>
+
+
+    <br class="clear">
+</div>
+<!-- END Content -->
+
+{%endblock%}

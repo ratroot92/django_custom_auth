@@ -1,0 +1,55 @@
+{% extends './layouts/base.html'%} {%block content%}
+<!-- Content -->
+<!-- <div id="content" class="colM">
+    <div id="content-main">
+        <form action="/register" method="post" id="login-form"><input type="hidden" name="csrfmiddlewaretoken"> {% csrf_token%}
+            <div class="form-row">
+
+                <label class="required" for="id_username">Username:</label> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+            </div>
+            <div class="form-row">
+
+                <label class="required" for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required id="id_password">
+                <input type="hidden" name="next" value="/admin/">
+            </div>
+
+
+            <div class="submit-row">
+                <label>&nbsp;</label><input type="submit" value="Log in">
+            </div>
+        </form>
+
+
+        <a href="/register" class="btn btn-success float-right btn btn-warning">Register Now  </a>
+    </div>
+
+
+    <br class="clear">
+</div> -->
+<!-- END Content -->
+
+
+
+
+
+
+<div id="content" class="colM">
+    <div id="content-main">
+        <form action="/register" method="post" id="login-form"><input type="hidden" name="csrfmiddlewaretoken"> {% csrf_token%} {% csrf_token %} {%if form.errors%} {%for errors in form.erros%} {{erros}}{%end for%}
+            <div class="form-row">
+                {{form.username.label_tag}} {{form.username}}
+            </div>
+
+            <div class="form-row">
+                {{form.password.label_tag}} {{form.password}}
+            </div>
+        </form>
+
+
+        <a href="/register" class="btn btn-success float-right btn btn-warning">Register Now </a>
+    </div>
+
+
+    <br class="clear">
+</div>
+{%endblock%}
