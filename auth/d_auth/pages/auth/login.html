@@ -1,52 +1,46 @@
 {% extends './layouts/base.html'%} {%block content%}
-<!-- Content -->
-<!-- <div id="content" class="colM">
-    <div id="content-main">
-        <form action="/register" method="post" id="login-form"><input type="hidden" name="csrfmiddlewaretoken"> {% csrf_token%}
-            <div class="form-row">
-
-                <label class="required" for="id_username">Username:</label> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
-            </div>
-            <div class="form-row">
-
-                <label class="required" for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required id="id_password">
-                <input type="hidden" name="next" value="/admin/">
-            </div>
-
-
-            <div class="submit-row">
-                <label>&nbsp;</label><input type="submit" value="Log in">
-            </div>
-        </form>
-
-
-        <a href="/register" class="btn btn-success float-right btn btn-warning">Register Now  </a>
-    </div>
-
-
-    <br class="clear">
-</div> -->
-<!-- END Content -->
-
-
-
-
-
 
 <div id="content" class="colM">
     <div id="content-main">
-        <form action="/register" method="post" id="login-form"><input type="hidden" name="csrfmiddlewaretoken"> {% csrf_token%} {% csrf_token %} {%if form.errors%} {%for errors in form.erros%} {{erros}}{%end for%}
+        
+        {% if messages %}
+        {% for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}> {{message}}</p>
+       
+        {% endfor %}
+        {% endif %}
+
+        <form action="/login/" method="post" id="login-form">
+            {% csrf_token%}
+
             <div class="form-row">
-                {{form.username.label_tag}} {{form.username}}
+                <div>
+                    {% if form.username.errors %}
+                    {{form.username.errors}}
+                    {% endif %}
+                </div>
+                <div class="w-100">
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                </div>
             </div>
 
             <div class="form-row">
-                {{form.password.label_tag}} {{form.password}}
+                <div>
+                    {% if form.password.errors %}
+                    {{form.password.errors}}
+                    {% endif %}
+                </div>
+                <div class="w-100">
+                    {{form.password.label_tag}}
+                    {{form.password}}
+                </div>
             </div>
+           <div class="w-100 text-center"> <input type="submit" value="Login" class="btn btn-success mt-5" /></div>
         </form>
 
 
-        <a href="/register" class="btn btn-success float-right btn btn-warning">Register Now </a>
+        <a href="/register" class=" float-right font-weight-bold text-primary mt-3 mb-0">Click here to register  </a>
     </div>
 
 
